@@ -1,6 +1,63 @@
 
 
+
 #include <iostream>
+#include <cmath>
+#include <iomanip>
+
+double invsqrt1px2std(double x) {
+
+	return (1.0 / sqrt(1.0 + x * x));
+}
+
+double invsqrt1px2(double x) {
+
+	if (fabs(x) <= 0.5)
+		return 0.5; // muss durch dieFormel ersetzt werden
+	else if (fabs(x) < 2.0)
+		return 0.5;// muss durch dieFormel ersetzt werden
+	else
+		return 0.5;// muss durch dieFormel ersetzt werden
+
+
+}
+
+
+void maxabsdiff(double f(double), double g(double), double a, double b, int n) {
+
+	double step = (b - a) / n;
+	double x;
+	double delta;
+
+	for (int i = 0; i <= n; ++i) {
+		x = step * i + a;
+
+		delta = fabs(f(x) - g(x));
+
+		std::cout << std::scientific << std::setprecision(1) << "xi = " << x << " delta = " << delta << std::endl;
+	}
+
+
+
+
+	return;
+}
+
+
+
+int main(int argc, char* argv[]) {
+
+	double a, b;
+	int n;
+
+	std::cin >> a >> b >> n; // erwartet in der Konsole zB die Eingabe: 1.0 2.0 3 
+	std::cout << "Es wurde eingegeben:\na = " << a << " b = " << b << " n = " << n << std::endl << std::endl;
+
+	maxabsdiff(invsqrt1px2, invsqrt1px2std, a, b, n );
+
+	return 0;
+}
+
 
 
 
